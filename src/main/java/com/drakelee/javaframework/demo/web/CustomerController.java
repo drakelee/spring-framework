@@ -18,8 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomerController {
 
-    @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    CustomerController(CustomerRepository customerRepository) {
+        customerRepository = this.customerRepository;
+    }
 
     @RequestMapping("/customers")
     public List<CustomerPO> listCustomers() {
